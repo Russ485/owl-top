@@ -1,7 +1,5 @@
 name: Publish Docker
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [main]
@@ -10,7 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t owl-top2 .
+
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
