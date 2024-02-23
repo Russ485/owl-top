@@ -11,9 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
-        run: docker build -t owl-top2 .
-
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
