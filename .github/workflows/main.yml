@@ -1,21 +1,23 @@
 name: Publish Docker
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@v5
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1
         with:
-          registry: docker.pkg.github.com
-          name: docker.pkg.github.com/russ485/owl-top/owl-top
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "develop"
+          dockerfile: ./path/to/Dockerfile
+          registry: docker.pkg.github.com
+          repository: russ485/owl-top/owl-top
+          tag_with_ref: true
