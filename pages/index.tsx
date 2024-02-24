@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Htag, Input, Rating, Tag } from "../components";
 import { P } from "../components/P/P";
 import { withLayout } from "../layout/Layout";
@@ -7,9 +7,15 @@ import axios from "axios";
 import { MenuItem } from "../interfaces/menu.interface";
 import { Textarea } from "../components/Textarea/Textarea";
 import { API } from "../helpers/api";
+import { useRouter } from "next/router";
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(4);
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/courses/financial-analytics");
+  }, []);
 
   return (
     <>
