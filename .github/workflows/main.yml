@@ -24,3 +24,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: docker.pkg.github.com
           platforms: linux/amd64,linux/arm64
+          build_args: |
+            - -f
+            - ./Dockerfile
