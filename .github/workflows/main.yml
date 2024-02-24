@@ -17,7 +17,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./path/to/Dockerfile
           registry: docker.pkg.github.com
-          repository: russ485/owl-top/owl-top
+          repository: Russ485/owl-top/owl-top
           tag_with_ref: true
